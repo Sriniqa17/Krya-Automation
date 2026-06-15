@@ -1,8 +1,23 @@
-
-# Playwright
 node_modules/
+dist/
+
+# Playwright auto-generated output
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Environment secrets - never commit real credentials
+# Keep config/ with placeholder values only
+config/prod.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.user

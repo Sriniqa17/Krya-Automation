@@ -1,15 +1,33 @@
 {
-  "name": "krya-automation",
+  "name": "krya-vts-automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright E2E automation framework for Krya VTS (Verification Tracking System)",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "test": "playwright test",
+    "test:landing": "playwright test tests/landing/",
+    "test:auth": "playwright test tests/auth/",
+    "test:dashboard": "playwright test tests/dashboard/",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:qa": "cross-env ENV=qa playwright test",
+    "test:dev": "cross-env ENV=dev playwright test",
+    "test:prod": "cross-env ENV=prod playwright test",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "e2e",
+    "krya",
+    "vts"
+  ],
+  "author": "Krya Solutions",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "cross-env": "^7.0.3"
   }
 }

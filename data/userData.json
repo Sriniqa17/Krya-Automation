@@ -1,0 +1,29 @@
+{
+  "kryaUsers": [
+    {
+      "name": "Krya Admin",
+      "email": "admin@kryasolutions.com",
+      "role": "admin"
+    },
+    {
+      "name": "Krya Verifier",
+      "email": "verifier@kryasolutions.com",
+      "role": "verifier"
+    }
+  ],
+  "clientUsers": [
+    {
+      "name": "Business Client",
+      "email": "client@business.com",
+      "company": "Business Corp",
+      "role": "client"
+    }
+  ],
+  "candidateUsers": [
+    {
+      "name": "John Candidate",
+      "email": "john.candidate@external.com",
+      "role": "candidate"
+    }
+  ]
+}

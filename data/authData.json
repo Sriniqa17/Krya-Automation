@@ -1,0 +1,21 @@
+{
+  "kryaUser": {
+    "email": "krya_user@kryasolutions.com",
+    "password": "KryaPass@123",
+    "role": "internal"
+  },
+  "clientUser": {
+    "email": "client_user@business.com",
+    "password": "ClientPass@123",
+    "role": "client"
+  },
+  "candidateUser": {
+    "email": "candidate_user@external.com",
+    "password": "CandidatePass@123",
+    "role": "candidate"
+  },
+  "invalidUser": {
+    "email": "invalid@test.com",
+    "password": "WrongPassword@123"
+  }
+}

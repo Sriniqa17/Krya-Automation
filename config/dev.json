@@ -1,0 +1,20 @@
+{
+  "baseUrl": "https://dev-trustzen.kryacheck.com",
+  "users": {
+    "krya": {
+      "email": "krya_user@kryasolutions.com",
+      "password": "KryaPass@123",
+      "role": "internal"
+    },
+    "client": {
+      "email": "client_user@business.com",
+      "password": "ClientPass@123",
+      "role": "client"
+    },
+    "candidate": {
+      "email": "candidate_user@external.com",
+      "password": "CandidatePass@123",
+      "role": "candidate"
+    }
+  }
+}
