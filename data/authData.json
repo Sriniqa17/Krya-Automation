@@ -1,21 +1,27 @@
 {
-  "kryaUser": {
-    "email": "krya_user@kryasolutions.com",
-    "password": "KryaPass@123",
-    "role": "internal"
+  "kryaLogin": {
+    "username": "srini",
+    "password": "Krya@1234",
+    "role": "internal",
+    "requiresCaptcha": true
   },
-  "clientUser": {
-    "email": "client_user@business.com",
-    "password": "ClientPass@123",
-    "role": "client"
+  "clientLogin": {
+    "username": "jusvin",
+    "password": "test@1234",
+    "role": "client",
+    "requiresCaptcha": false
   },
-  "candidateUser": {
-    "email": "candidate_user@external.com",
+  "candidateLogin": {
+    "username": "candidate_user",
     "password": "CandidatePass@123",
-    "role": "candidate"
+    "role": "candidate",
+    "requiresCaptcha": false
   },
-  "invalidUser": {
-    "email": "invalid@test.com",
-    "password": "WrongPassword@123"
+  "negativeTestCases": {
+    "invalidUsername": "invaliduser",
+    "invalidPassword": "WrongPassword@123",
+    "emptyString": "",
+    "sqlInjection": "admin' OR '1'='1",
+    "xssAttempt": "<script>alert('xss')</script>"
   }
 }

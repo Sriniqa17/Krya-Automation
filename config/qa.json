@@ -2,7 +2,7 @@
   "baseUrl": "https://uat-trustzen.kryacheck.com",
   "users": {
     "krya": {
-      "email": "krya_user@kryasolutions.com",
+      "email": "Srini",
       "password": "KryaPass@123",
       "role": "internal"
     },
