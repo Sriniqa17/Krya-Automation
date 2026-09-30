@@ -21,6 +21,15 @@ export default defineConfig({
 
   reporter: [['html', { open: 'never' }], ['list']],
 
+  // Visual regression (toHaveScreenshot) defaults
+  expect: {
+    toHaveScreenshot: {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0.01, // tolerate up to 1% of pixels differing (anti-aliasing noise)
+    },
+  },
+
   use: {
     baseURL: envConfig.baseUrl,
     trace: 'on-first-retry',

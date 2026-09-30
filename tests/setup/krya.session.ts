@@ -28,11 +28,16 @@ test('Save Krya internal session', async ({ page, landingPage, kryaLoginPage }) 
     await kryaLoginPage.usernameInput.fill(authData.kryaLogin.username);
     await kryaLoginPage.passwordInput.fill(authData.kryaLogin.password);
     await kryaLoginPage.captchaContainer.screenshot({ path: CAPTCHA_IMAGE });
-    console.log(`>>> Attempt ${attempt}: captcha saved to ${CAPTCHA_IMAGE}, waiting for ${CAPTCHA_ANSWER}`);
+    console.log(`>>> Attempt ${attempt}: type the captcha and click Sign In in the browser window`);
+    console.log(`    (or write the captcha text to ${CAPTCHA_ANSWER}; image saved to ${CAPTCHA_IMAGE})`);
 
-    const deadline = Date.now() + 3 * 60 * 1000;
+    const deadline = Date.now() + 5 * 60 * 1000;
     while (!fs.existsSync(CAPTCHA_ANSWER) && onLoginPage()) {
-      if (Date.now() > deadline) throw new Error('Timed out waiting for captcha answer');
+      if (Date.now() > deadline) throw new Error('Timed out after 5 minutes waiting for login');
+      // Manual sign-in can raise the "continue this user account?" dialog — accept it
+      if (await kryaLoginPage.continueSessionButton.isVisible()) {
+        await kryaLoginPage.continueSessionButton.click();
+      }
       await page.waitForTimeout(1000);
     }
     if (!onLoginPage()) break; // logged in manually

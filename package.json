@@ -9,6 +9,8 @@
     "test:auth": "playwright test tests/auth/",
     "test:dashboard": "playwright test tests/dashboard/",
     "test:case": "playwright test tests/case/ --project=\"Google Chrome\"",
+    "test:visual": "playwright test tests/visual/ --project=\"Google Chrome\"",
+    "test:visual:update": "playwright test tests/visual/ --project=\"Google Chrome\" --update-snapshots",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:qa": "cross-env ENV=qa playwright test",
