@@ -14,7 +14,6 @@ Krya-Automation/
 │   ├── KryaLoginPage.ts          # Krya (Internal) login specific POM
 │   ├── ClientLoginPage.ts        # Client (Business Partner) login specific POM
 │   ├── CandidateLoginPage.ts     # Candidate (External) login specific POM
-│   ├── LoginPage.ts              # (Legacy - consider deprecating)
 │   ├── LandingPage.ts            # Landing page with 3 login options
 │   ├── DashboardPage.ts          # Dashboard after login
 │   └── components/
@@ -28,7 +27,6 @@ Krya-Automation/
 │       ├── krya-login.spec.ts    # 30 Krya login test cases (positive + negative)
 │       ├── client-login.spec.ts  # 30 Client login test cases (positive + negative)
 │       ├── candidate-login.spec.ts # 20 Candidate login test cases (positive + negative)
-│       ├── login.spec.ts         # (Legacy tests)
 │       └── logout.spec.ts
 │
 ├── data/

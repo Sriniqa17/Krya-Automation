@@ -11,15 +11,12 @@ export class DashboardPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.navbar = page.locator('nav, header').first();
-    this.sidebar = page.locator('aside, .sidebar, [data-testid="sidebar"]').first();
+    // VTS uses Angular Material: mat-toolbar header, mat-sidenav menu, icon-only logout button
+    this.navbar = page.locator('mat-toolbar').first();
+    this.sidebar = page.locator('mat-sidenav').first();
     this.pageHeading = page.getByRole('heading').first();
-    this.logoutButton = page
-      .getByRole('button', { name: /logout|sign out/i })
-      .or(page.getByRole('link', { name: /logout|sign out/i }));
-    this.userMenuButton = page
-      .locator('.user-menu, .profile-menu, [data-testid="user-menu"], .avatar')
-      .first();
+    this.logoutButton = page.locator('button[mattooltip="Logout"]');
+    this.userMenuButton = page.locator('.user.mat-menu-trigger');
     this.profileMenu = page.locator('.dropdown-menu, .profile-dropdown').first();
   }
 

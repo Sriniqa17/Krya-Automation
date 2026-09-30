@@ -1,17 +1,20 @@
 import { test, expect } from '../../fixtures/baseTest';
-import authData from '../../data/authData.json';
+import authData from '../../data/authData';
 
-test.describe('Krya VTS - Logout', () => {
+// These tests must log in themselves: logging out ends the server session, so they
+// cannot reuse the saved Krya session without breaking every other test. All three
+// logins now require a captcha, so they stay disabled until UAT offers a captcha bypass.
+test.describe.fixme('Krya VTS - Logout', () => {
 
   test('TC01 - Krya Internal user can logout successfully', async ({
     landingPage,
-    loginPage,
+    kryaLoginPage,
     dashboardPage,
     page,
   }) => {
     await landingPage.goto();
     await landingPage.clickKryaLogin();
-    await loginPage.login(authData.kryaUser.email, authData.kryaUser.password);
+    await kryaLoginPage.login(authData.kryaLogin.username, authData.kryaLogin.password);
     await dashboardPage.verifyDashboardLoaded();
     await dashboardPage.logout();
     await expect(page).toHaveURL(/login|\//);
@@ -19,13 +22,13 @@ test.describe('Krya VTS - Logout', () => {
 
   test('TC02 - Client user can logout successfully', async ({
     landingPage,
-    loginPage,
+    clientLoginPage,
     dashboardPage,
     page,
   }) => {
     await landingPage.goto();
     await landingPage.clickClientLogin();
-    await loginPage.login(authData.clientUser.email, authData.clientUser.password);
+    await clientLoginPage.login(authData.clientLogin.username, authData.clientLogin.password);
     await dashboardPage.verifyDashboardLoaded();
     await dashboardPage.logout();
     await expect(page).toHaveURL(/login|\//);
@@ -33,13 +36,13 @@ test.describe('Krya VTS - Logout', () => {
 
   test('TC03 - Candidate user can logout successfully', async ({
     landingPage,
-    loginPage,
+    candidateLoginPage,
     dashboardPage,
     page,
   }) => {
     await landingPage.goto();
     await landingPage.clickCandidateLogin();
-    await loginPage.login(authData.candidateUser.email, authData.candidateUser.password);
+    await candidateLoginPage.login(authData.candidateLogin.username, authData.candidateLogin.password);
     await dashboardPage.verifyDashboardLoaded();
     await dashboardPage.logout();
     await expect(page).toHaveURL(/login|\//);
@@ -47,13 +50,13 @@ test.describe('Krya VTS - Logout', () => {
 
   test('TC04 - Session is not accessible after logout (back button)', async ({
     landingPage,
-    loginPage,
+    kryaLoginPage,
     dashboardPage,
     page,
   }) => {
     await landingPage.goto();
     await landingPage.clickKryaLogin();
-    await loginPage.login(authData.kryaUser.email, authData.kryaUser.password);
+    await kryaLoginPage.login(authData.kryaLogin.username, authData.kryaLogin.password);
     const dashboardUrl = page.url();
     await dashboardPage.logout();
     await page.goBack();

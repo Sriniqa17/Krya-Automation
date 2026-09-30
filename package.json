@@ -8,12 +8,14 @@
     "test:landing": "playwright test tests/landing/",
     "test:auth": "playwright test tests/auth/",
     "test:dashboard": "playwright test tests/dashboard/",
+    "test:case": "playwright test tests/case/ --project=\"Google Chrome\"",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:qa": "cross-env ENV=qa playwright test",
     "test:dev": "cross-env ENV=dev playwright test",
     "test:prod": "cross-env ENV=prod playwright test",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "auth:krya": "cross-env SAVE_SESSION=1 playwright test --project=krya-session"
   },
   "keywords": [
     "playwright",

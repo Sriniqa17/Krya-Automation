@@ -2,6 +2,11 @@ import { defineConfig, devices } from '@playwright/test';
 import * as fs from 'fs';
 import * as path from 'path';
 
+// Local secrets (passwords) — see .env.example. In CI they come from repository secrets.
+if (fs.existsSync(path.resolve(__dirname, '.env'))) {
+  process.loadEnvFile(path.resolve(__dirname, '.env'));
+}
+
 const env = process.env.ENV || 'qa';
 const envConfig = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, `config/${env}.json`), 'utf-8')
@@ -24,6 +29,16 @@ export default defineConfig({
   },
 
   projects: [
+    {
+      // Manual one-time login (captcha). Run: npm run auth:krya
+      name: 'krya-session',
+      testMatch: /.*\.session\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        headless: false,
+      },
+    },
     {
       name: 'Google Chrome',
       use: {

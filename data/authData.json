@@ -1,21 +1,19 @@
 {
   "kryaLogin": {
-    "username": "srini",
-    "password": "Krya@1234",
+    "username": "Srini",
     "role": "internal",
-    "requiresCaptcha": true
+    "requiresCaptcha": true,
+    "department": "CRT India Department"
   },
   "clientLogin": {
     "username": "jusvin",
-    "password": "test@1234",
     "role": "client",
-    "requiresCaptcha": false
+    "requiresCaptcha": true
   },
   "candidateLogin": {
     "username": "candidate_user",
-    "password": "CandidatePass@123",
     "role": "candidate",
-    "requiresCaptcha": false
+    "requiresCaptcha": true
   },
   "negativeTestCases": {
     "invalidUsername": "invaliduser",

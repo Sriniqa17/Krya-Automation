@@ -11,6 +11,7 @@ dist/
 # Environment secrets - never commit real credentials
 # Keep config/ with placeholder values only
 config/prod.json
+.env
 
 # OS files
 .DS_Store
@@ -21,3 +22,6 @@ Thumbs.db
 .idea/
 *.suo
 *.user
+
+# Playwright MCP output (snapshots, screenshots)
+/.playwright-mcp/

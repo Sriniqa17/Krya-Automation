@@ -1,5 +1,5 @@
 import { test, expect } from '../../fixtures/baseTest';
-import authData from '../../data/authData.json';
+import authData from '../../data/authData';
 
 test.describe('Candidate User Login - Positive & Negative Tests', () => {
   test.beforeEach(async ({ landingPage, candidateLoginPage }) => {
