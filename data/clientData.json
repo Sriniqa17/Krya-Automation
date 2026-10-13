@@ -1,0 +1,18 @@
+{
+  "bulkCaseCreation": {
+    "candidateFirstName": "AutoTest",
+    "candidateLastNamePrefix": "Bulk",
+    "fatherName": "AutoTest Father",
+    "gender": "Male",
+    "package": "Standard",
+    "priority": "Standard",
+    "emailDomain": "example.com",
+    "existingContactNumber": "9876543210",
+    "document": "data/files/sample-document.pdf",
+    "expectedGenders": ["Male", "Female", "Not Provided / Not Applicable"],
+    "expectedPriorities": ["Standard", "High"],
+    "expectedPackages": ["APTR", "Simple", "Standard"],
+    "expectedCurrentlyWorking": ["Yes", "No"],
+    "caseReferencePattern": "^KSPLL-APT-\\d+$"
+  }
+}

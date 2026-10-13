@@ -83,8 +83,9 @@ export class CaseCreationPage {
   /** From the dashboard, opens the Case Creation list via its count tile. */
   async openFromDashboard() {
     await this.dashboardCaseCreationTile.click();
-    await this.page.waitForURL(/case\/case-creation/);
-    await expect(this.listHeading).toBeVisible();
+    // Don't wait for the full "load" event — UAT's SPA navigation often never fires it promptly
+    await expect(this.page).toHaveURL(/case\/case-creation/, { timeout: 60_000 });
+    await expect(this.listHeading).toBeVisible({ timeout: 60_000 });
   }
 
   async clickAdd() {
@@ -105,9 +106,16 @@ export class CaseCreationPage {
     await expect(this.siteNameInput).toBeEnabled();
   }
 
-  async selectSite(siteName: string) {
+  /**
+   * Selects the site whose option starts with the given site code (e.g. "101" matches
+   * "101-Krya- Chennai"), so the test survives site renames. Returns the full option text.
+   */
+  async selectSite(siteCode: string) {
     await this.siteNameInput.click();
-    await this.page.getByRole('option', { name: siteName, exact: true }).click();
+    const option = this.page.getByRole('option', { name: new RegExp(`^\\s*${siteCode}-`) }).first();
+    const siteName = (await option.innerText()).trim();
+    await option.click();
+    return siteName;
   }
 
   async setNoOfCandidates(count: number) {

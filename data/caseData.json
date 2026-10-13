@@ -2,8 +2,7 @@
   "caseCreation": {
     "clientSearchText": "Krya",
     "clientName": "Krya Solutions Private Limited",
-    "siteName": "101-DSSI",
-    "siteDisplayName": "DSSI",
+    "siteCode": "101",
     "noOfCandidates": 1,
     "documentFolderPath": "Automation/AutoTest",
     "mailTo": "Test@test.com",

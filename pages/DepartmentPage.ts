@@ -22,6 +22,8 @@ export class DepartmentPage {
     // The radio input is visually hidden behind its label, so click the label text
     await this.page.getByText(department, { exact: true }).click();
     await this.proceedButton.click();
-    await this.page.waitForURL(/dashboard\/home/);
+    // If Proceed does nothing (or bounces to "/"), the saved VTS session has expired on the server
+    await expect(this.page, 'Did not reach the dashboard — the Krya session has probably expired. Run: npm run auth:krya')
+      .toHaveURL(/dashboard\/home/, { timeout: 60_000 });
   }
 }

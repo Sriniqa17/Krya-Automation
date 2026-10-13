@@ -40,8 +40,9 @@ export class LandingPage {
   }
 
   async goto() {
-    await this.page.goto('/');
-    await this.page.waitForLoadState('networkidle');
+    // UAT keeps the network busy, so 'networkidle' is slow/unreliable — wait for the login cards instead
+    await this.page.goto('/', { waitUntil: 'domcontentloaded' });
+    await expect(this.kryaLoginCard).toBeVisible({ timeout: 60_000 });
   }
 
   async verifyPageLoaded() {
@@ -53,17 +54,14 @@ export class LandingPage {
 
   async clickKryaLogin() {
     await this.kryaLoginCard.click();
-    await this.page.waitForLoadState('networkidle');
   }
 
   async clickClientLogin() {
     await this.clientLoginCard.click();
-    await this.page.waitForLoadState('networkidle');
   }
 
   async clickCandidateLogin() {
     await this.candidateLoginCard.click();
-    await this.page.waitForLoadState('networkidle');
   }
 
   async clickGetStarted() {

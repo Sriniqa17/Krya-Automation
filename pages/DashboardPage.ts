@@ -8,6 +8,9 @@ export class DashboardPage {
   readonly logoutButton: Locator;
   readonly userMenuButton: Locator;
   readonly profileMenu: Locator;
+  readonly welcomeHeading: Locator;
+  readonly confirmLogoutButton: Locator;
+  readonly stayOnButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +21,10 @@ export class DashboardPage {
     this.logoutButton = page.locator('button[mattooltip="Logout"]');
     this.userMenuButton = page.locator('.user.mat-menu-trigger');
     this.profileMenu = page.locator('.dropdown-menu, .profile-dropdown').first();
+    this.welcomeHeading = page.getByRole('heading', { name: 'Welcome to Verification Tracking System Dashboard!' });
+    // Logout asks: "Changes you made may not be saved. Do you want to Logout this session?"
+    this.confirmLogoutButton = page.getByRole('button', { name: 'Yes, Logout' });
+    this.stayOnButton = page.getByRole('button', { name: 'Stay On' });
   }
 
   async verifyDashboardLoaded() {
@@ -25,14 +32,11 @@ export class DashboardPage {
     await expect(this.page).not.toHaveURL(/login/);
   }
 
+  /** Clicks the sidebar Logout icon and confirms with "Yes, Logout". Lands on the landing page. */
   async logout() {
-    try {
-      await this.userMenuButton.click();
-      await this.logoutButton.click();
-    } catch {
-      await this.logoutButton.click();
-    }
-    await this.page.waitForLoadState('networkidle');
+    await this.logoutButton.click();
+    await this.confirmLogoutButton.click();
+    await expect(this.page).not.toHaveURL(/dashboard/);
   }
 
   async verifyLoggedOut() {

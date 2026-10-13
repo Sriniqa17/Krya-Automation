@@ -35,6 +35,9 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    // UAT's HTTP/2 is unreliable in browsers (net::ERR_HTTP2_PROTOCOL_ERROR on the captcha API and
+    // assets, seen Oct 2026), so force HTTP/1.1. Remove once UAT's HTTP/2 is fixed.
+    launchOptions: { args: ['--disable-http2'] },
   },
 
   projects: [

@@ -50,7 +50,7 @@ test.describe('Krya Internal - Case Creation', () => {
 
     await caseCreationPage.clickAdd();
     await caseCreationPage.selectClient(data.clientName);
-    await caseCreationPage.selectSite(data.siteName);
+    const siteName = await caseCreationPage.selectSite(data.siteCode);
     await caseCreationPage.setNoOfCandidates(data.noOfCandidates);
     await caseCreationPage.documentFolderPathInput.fill(data.documentFolderPath);
     await caseCreationPage.setCaseInitiationDateToday();
@@ -68,6 +68,7 @@ test.describe('Krya Internal - Case Creation', () => {
     await expect(row).toBeVisible();
     await expect(row).toContainText(candidateName);
     await expect(row).toContainText(data.clientName);
-    await expect(row).toContainText(data.siteDisplayName);
+    // The list shows the site without its code, e.g. "101-DSSI" -> "DSSI"
+    await expect(row).toContainText(siteName.replace(/^\d+-/, '').trim());
   });
 });
